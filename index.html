@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Controle De Passagens</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/passagem.css">
+		<script type="text/javascript" src="js/passagens.js"></script>
+    <script type="text/javascript" src="js/configuracao.js"></script>
+    <script type="text/javascript" src="js/passageiro.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <!--<script type="text/javascript" src="js/exemplo.js"></script> -->
+    <!-- alterei aqui-->
+    </head>
+    <body>
+      
+      <div class="logo">
+        <img src="imgs\logo.png" alt="logo">
+      </div>
+      <div class="principal">
+        <section class="form">
+          <form name="formulario" class="formulario">
+            <fieldset>
+              <legend>Dados da Passagens</legend>
+              <label for="destino">Destino:</label>
+              <select id="destino" name="destino" required>
+                <option value="">Escolha o destino</option>
+              </select>
+              <label for="data_Viagem">Data:</label>
+              <input id="dt_Viagem" type="date" name="data_Viagem" min="" onchange="">
+              <label for="horario">Horário:</label>
+              <select id="horario"name="horario" required>
+                <option value="">Escolha o horário</option>
+              </select>
+
+            </fieldset>
+            <fieldset>
+              <legend>Dados do Passageiro</legend>
+              <label for="nome_pass">Nome:</label>
+              <input id="nomePass" name="nome_pass" onblur="" type="text" required>
+              <label for="cpf_pass">CPF:</label>
+              <input id="cpfPass" name="cpf_pass" type="text"  placeholder="xxx.xxx.xxx-xx" onblur="" required>
+              <label for="mail_pass">E-mail:</label>
+              <input id="mailPass" name="mail_pass" type="text" onblur="" required>
+            </fieldset>
+          </form>
+        </section>
+        <div class="linhaVertical"></div>
+        <div id="cortina"><h2>Escolha o destino, data e horário para selecionar poltrona</h2></div>
+    		<section class="onibus">
+    		    <div class="janelaEsquerda">
+              <ol>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+              </ol>
+            </div>
+            <div class="corredorEsquerdo">
+              <ol>
+                  <li class="polt"> </li>
+                  <li class="polt"> </li>
+                  <li class="polt"> </li>
+                  <li class="polt"> </li>
+                  <li class="polt"> </li>
+                  <li class="polt"> </li>
+                  <li class="polt"> </li>
+                  <li class="polt"> </li>
+                  <li class="polt"> </li>
+                  <li class="polt"> </li>
+              </ol>
+            </div>
+    		    <div class="corredorDireito">
+              <ol>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+              </ol>
+            </div>
+            <div class="janelaDireita">
+              <ol>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+                <li class="polt"> </li>
+              </ol>
+            </div>
+            <div id="lotacao">
+              <h6>Lotação|</h6>
+              <div id="barra">0%</div>
+            </div>
+            <div class="lbls">
+              <label class="lbl">Tarifa:</label>
+              <label id="trfPass"></label>
+              <label class="lbl">Passagens:</label>
+              <label id="vlrPass"></label>
+              <label class="lblTotal">Total:</label>
+              <label id="total"></label>
+            </div>
+    		</section>
+      </div>
+      <div class="avancar">
+        <hr>
+        <span>AVANÇAR</span>
+        <div id="btnAvancar" class="loader"></div>
+      </div>
+      <div id="dados" class="modal">
+          <div class="borda"><span class="close">&times;</span></div>
+
+          <p><label class="campo">Passageiro</label><label class="campo2"></label>
+          <label class="campo">E-mail</label><label class="campo2"></label>
+          <label class="campo">CPF</label><label class="campo2"></label></p>
+          <p><label class="campo">N° Passagens</label><label class="campo2"></label>
+          <label class="campo">Tarifa</label><label class="campo2"></label>
+          <label class="campo">TOTAL</label><label class="campo2"></label></p>
+          <div class="borda"><button class="button" name="btn_Comprar" id="btnCompra"><span>&raquo;</span></button></div>
+      </div>
+      <div id="areaBilhete">
+      <div id="bilhete" class="modal">
+          <div class="header">
+            <span class="close">&times;</span>
+            <h1>BILHETE DE EMBARQUE</h1>
+          </div>
+          <div class="corpo">
+            <p><label class="campo">Passageiro</label><label class="campo2"></label></p>
+            <p><label class="campo">E-mail</label><label class="campo2"></label></p>
+            <p><label class="campo">CPF</label><label class="campo2"></label></p>
+            <hr>
+            <p><label class="campo">Emissão</label><label class="campo2"></label><label class="campo">Hora</label><label class="campo2"></label></p>
+            <p><label class="campo">Agência</label><label class="campo2"></label><label class="campo">Passagem</label><label class="campo2"></label></p>
+            <p><label class="campo">Linha</label><label class="campo2"></label><label class="campo">Itinerário</label><label class="campo2"></label></p>
+            <hr>
+            <p><label class="campo">Origem</label><label class="campo2"></label><label class="campo">Destino</label><label class="campo2"></label></p>
+            <p><label class="campo">Data</label><label class="campo2"></label><label class="campo">Horário</label><label class="campo2"></label></p>
+            <p><label class="campo">Poltrona</label><label class="campo2"></label><label class="campo">Plataforma</label><label class="campo2"></label></p>
+            <hr>
+            <p><label class="campo">Valor</label><label class="campo2"></label><label class="campo">Quantidade</label><label class="campo2"></label></p>
+            <p><label class="campo">Taxa</label><label class="campo2"></label><label class="campo">Pedágio</label><label class="campo2"></label></p>
+            <p><label class="campo">TOTAL</label><label class="campo2"></label></p>
+          </div>
+          <div class="footer">
+            <img src="imgs\logo.png" alt="logo"><label>EMPRESA TAL</label>
+          </div>
+      </div>
+    </div>
+    </body>
+</html>
