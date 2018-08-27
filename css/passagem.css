@@ -1,7 +1,8 @@
 body{
-  background: url(../imgs/fundoPrincipal.jpg) no-repeat;
+  /*background: url(../imgs/fundoPrincipal.jpg) no-repeat;
   background-size: 100%;
-  background-blend-mode:lighten;
+  background-blend-mode:lighten;*/
+  background-color: #2A2A2E;
 
 }
 
